@@ -1,0 +1,24 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container label {
+    margin-bottom: 8px;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 50%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-container button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
