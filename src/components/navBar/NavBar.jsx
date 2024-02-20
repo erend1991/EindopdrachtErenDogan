@@ -7,6 +7,7 @@ function NavBar() {
     return (
         <nav className="main-navigation outer-content-container">
             <div className="inner-nav-container">
+                <h2 className="push"> WatEtenWeVandaag</h2>
                 <ul className="main-navigation-links">
                     <li><NavLink className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
                                  to="/">Home

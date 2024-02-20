@@ -1,0 +1,33 @@
+.recipe-card-outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.recipe-card {
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    align-items: center;
+
+}
+
+.favorite-button {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    padding: 0;
+}
+
+.favorite-icon {
+    color: red;
+    font-size: 30px;
+}
+
+
+.favorite {
+    color: blue; /* Change the color to your preference */
+}

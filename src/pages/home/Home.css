@@ -14,18 +14,10 @@ img{
     height: 500px;
 }
 
-
-
-/*.section-home-branding {*/
-/*    background-color: white;*/
-/*    padding: 30px 0;*/
-/*}*/
-
 .inner-content-container__text-restriction {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 
 .img {
     max-width: 1200px;
@@ -36,8 +28,4 @@ img{
     color: #333;
 }
 
-/*.section-home-branding figure {*/
-/*    max-width: 100%;*/
-/*    margin-top: 20px;*/
-/*}*/
 

@@ -1,17 +1,19 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {useState} from "react";
 import axios from "axios";
 import Button from "../../button/Button.jsx";
+import './SignUp.css'
+import Header from "../../components/header/Header.jsx";
 
 function SignUp() {
 
-    const [email, setEmail] = useState()
-    const [userName, setUserName] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState('')
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -19,29 +21,33 @@ function SignUp() {
         toggleLoading(true);
 
         try {
-            await axios.post('http://localhost:3000/register', {
-                email: email,
-                password: password,
-                username: userName,
-            });
-
-            // Om te zien hoe je een canceltoken implementeerd kun je de bonus-branch bekijken!
-
-            history.push('/favorites');
-        } catch(e) {
+            await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signup",
+                {
+                    username: userName,
+                    email: email,
+                    password: password,
+                    role: ["user"],
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer xxx.yyy.zzz",
+                    },
+                }
+            );
+            console.log(email, userName)
+            navigate('/favorites');
+        } catch (e) {
             console.error(e);
             toggleError(true);
         }
 
         toggleLoading(false);
     }
-
-
-
         return (
         <>
+            <Header/>
             <h1>Registreren</h1>
-
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email-field">
                     Emailadres:
@@ -53,7 +59,6 @@ function SignUp() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </label>
-
                 <label htmlFor="username-field">
                     Gebruikersnaam:
                     <input

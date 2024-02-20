@@ -2,7 +2,7 @@ import {useState} from 'react';
 import axios from 'axios';
 import Button from "../../button/Button.jsx";
 import './SearchBar.css'
-import RecipeCard from "../recipe.jsx/RecipeCard.jsx";
+import RecipeCard from "../recipeCard.jsx/RecipeCard.jsx";
 import {useForm} from "react-hook-form";
 
 function SearchBar() {
@@ -45,6 +45,7 @@ function SearchBar() {
                     <label>
                         <select {...register('mealType')}>
                             <option value="">-- Selecteer een categorie --</option>
+                            <option value=""> </option>
                             <option value="Breakfast">ontbijt</option>
                             <option value="Lunch">lunch</option>
                             <option value="Dinner">diner</option>
@@ -54,6 +55,7 @@ function SearchBar() {
                     <label>
                         <select  {...register('health')}>
                             <option value="">-- Selecteer een categorie --</option>
+                            <option value=""> </option>
                             <option value="vegan">Vegan</option>
                             <option value="vegetarian">Vegetarian</option>
                             <option value="pescatarian">Pescatarian</option>
@@ -66,7 +68,7 @@ function SearchBar() {
 
                 </form>
             </div>
-            <div>
+            <div className="outer-recipe-card-container">
                 {error && <p>Geen recepten gevonden!</p>}
                 <div className="recipe-card-container"/>
                 {recipes.map((recipe) => (

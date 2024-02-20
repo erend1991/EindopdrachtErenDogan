@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import './Contact.css';
 import Button from '../../button/Button.jsx';
 import Header from '../../components/header/Header.jsx';
@@ -10,19 +9,20 @@ function ContactForm() {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
 
-    async function handleSubmit(e) {
-        e.preventDefault(); // Prevent the default form submission behavior
+    function handleSubmit(e) {
+        e.preventDefault();
 
         try {
-            const response = await axios.post('/api/contact', { email, message });
-
-            if (response.status === 200) {
-                setSuccess(true);
-            } else {
-                setError('false');
-            }
+            setSuccess(true);
+            console.log('Email:', email);
+            console.log('Message:', message);
+            console.log('Form submitted successfully');
         } catch (err) {
-            setError('true');
+            console.error(err);
+            setError('An error occurred while submitting the form.');
+        } finally {
+            setEmail('');
+            setMessage('');
         }
     }
 
@@ -30,7 +30,7 @@ function ContactForm() {
         <>
             <h2>Contactpagina</h2>
             <Header />
-            <div className="outer-content-container">
+            <div className="form-outer-content-container">
                 {success && <p className="success-message">Bedankt voor uw bericht!</p>}
                 {!success && (
                     <form className="form-container" onSubmit={handleSubmit}>
@@ -57,7 +57,7 @@ function ContactForm() {
                             Submit
                         </Button>
 
-                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                        {error && <p>{error}</p>}
                     </form>
                 )}
             </div>
@@ -66,4 +66,3 @@ function ContactForm() {
 }
 
 export default ContactForm;
-

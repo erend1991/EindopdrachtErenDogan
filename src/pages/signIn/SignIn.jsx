@@ -3,6 +3,7 @@ import {AuthContext} from "../../AuthContext/AuthContext.jsx";
 import Button from "../../button/Button.jsx";
 import "./SignIn.css"
 import axios from "axios";
+import Header from "../../components/header/Header.jsx";
 
 
 function SignIn() {
@@ -18,10 +19,10 @@ function SignIn() {
 
 
         try {
-            const result = await axios.post('http://localhost:3000/login',{
+            const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
                 email: email,
                 password: password,
-        })
+            })
             console.log(result.data)
             login(result.data.accesToken)
 
@@ -32,7 +33,10 @@ function SignIn() {
     }
 
 
-        return (
+    return (
+        <>
+            <Header/>
+            <h2>Inloggen</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email-field">
                     Emailadres:
@@ -60,9 +64,11 @@ function SignIn() {
                     Submit
                 </Button>
             </form>
+        </>
 
-        )
+    )
 
 
 }
+
 export default SignIn;
