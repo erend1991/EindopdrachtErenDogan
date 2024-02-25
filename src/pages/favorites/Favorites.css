@@ -1,0 +1,43 @@
+.favorites-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list-item {
+    width: 30%;
+    margin: 0 1% 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid grey;
+    box-shadow: 0 0 10px white;
+    border-radius: 8px;
+    position: relative;
+    color: grey;
+}
+
+.fav-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.ingredients-list {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+
+.no-favorites {
+    font-size: 18px;
+    margin-top: 20px;
+}

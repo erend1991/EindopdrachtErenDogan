@@ -15,7 +15,6 @@
 }
 
 .inner-nav-container {
-    /*flex-basis: 1400px;*/
     flex-shrink: 1;
     flex-grow: 0;
     margin: 0 10px;
@@ -36,4 +35,15 @@
 .push{
     color: grey;
     margin-right: auto;
+}
+
+button{
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #3498db;
+    color: #fff;
 }

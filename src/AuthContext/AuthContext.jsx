@@ -18,16 +18,6 @@ function AuthContextProvider({children}) {
         if (token) {
             const decoded = jwtDecode(token)
             fetchUserData(decoded.sub, token)
-            toggleIsAuth({
-                isAuth: true,
-                user: {
-                    username: '',
-                    email: '',
-                    id: '',
-                    role: ['user']
-                },
-                status: 'done',
-            })
         } else {
             toggleIsAuth({
                 isAuth: false,
@@ -38,30 +28,34 @@ function AuthContextProvider({children}) {
     }, [])
 
     function login(JWT) {
-        console.log('Gebruiker is ingelogd!');
+        console.log('JWT', JWT);
         localStorage.setItem('token', JWT)
         const decoded = jwtDecode(JWT)
-        fetchUserData(decoded.sub, JWT, '/')
+        fetchUserData(decoded.sub, JWT)
+
+        navigate('/favorites')
     }
 
 
     function logout() {
-        console.log('Gebruiker is uitgelogd!');
         localStorage.clear()
         toggleIsAuth({
             isAuth: false,
             role: null,
             status: 'done'
         });
+        console.log('Gebruiker is uitgelogd!');
         navigate('/');
     }
 
     async function fetchUserData(id, token) {
         try {
-            const result = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/auth/signin/${id}`, {
+            console.log('token', token)
+            console.log('id', id)
+            const result = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user`, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
                 }
             })
             toggleIsAuth({
@@ -77,20 +71,20 @@ function AuthContextProvider({children}) {
 
         } catch (e) {
             console.error(e)
-
         }
     }
 
     const contextData = {
-        isAuth: isAuth,
+        isAuth: isAuth.isAuth,
+        user: isAuth.user,
         login: login,
         logout: logout,
     };
 
     return (
         <AuthContext.Provider value={contextData}>
-            {toggleIsAuth.status ==='pending'
-                ?<p>Loading...</p>
+            {toggleIsAuth.status === 'pending'
+                ? <p>Loading...</p>
                 : children}
         </AuthContext.Provider>
     );

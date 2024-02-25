@@ -2,7 +2,7 @@ import {useState} from 'react';
 import axios from 'axios';
 import Button from "../../button/Button.jsx";
 import './SearchBar.css'
-import RecipeCard from "../recipeCard.jsx/RecipeCard.jsx";
+import RecipeCard from "../recipeCard/RecipeCard.jsx";
 import {useForm} from "react-hook-form";
 
 function SearchBar() {
@@ -12,16 +12,31 @@ function SearchBar() {
 
 
     async function getRecipes(data) {
-        setError(false)
-        console.log(data)
+        setError(false);
+        console.log(data);
+
         try {
-            const response = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${data.searchQuery}&app_id=17ed807b&app_key=527f06e4d596aa8bb42802f7ab70ef6c&health=${data.health}&mealType=${data.mealType}`,
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Accept-Language': 'Dutch',
-                    },
-                })
+            // Construct the API query dynamically based on the provided options
+            let apiQuery = `https://api.edamam.com/api/recipes/v2?type=public&app_id=17ed807b&app_key=527f06e4d596aa8bb42802f7ab70ef6c`;
+
+            if (data.searchQuery) {
+                apiQuery += `&q=${data.searchQuery}`;
+            }
+
+            if (data.mealType) {
+                apiQuery += `&mealType=${data.mealType}`;
+            }
+
+            if (data.health) {
+                apiQuery += `&health=${data.health}`;
+            }
+
+            const response = await axios.get(apiQuery, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Accept-Language': 'Dutch',
+                },
+            });
             setRecipes(response.data.hits);
             console.log(response.data.hits)
         } catch (error) {
@@ -45,7 +60,6 @@ function SearchBar() {
                     <label>
                         <select {...register('mealType')}>
                             <option value="">-- Selecteer een categorie --</option>
-                            <option value=""> </option>
                             <option value="Breakfast">ontbijt</option>
                             <option value="Lunch">lunch</option>
                             <option value="Dinner">diner</option>
@@ -55,7 +69,6 @@ function SearchBar() {
                     <label>
                         <select  {...register('health')}>
                             <option value="">-- Selecteer een categorie --</option>
-                            <option value=""> </option>
                             <option value="vegan">Vegan</option>
                             <option value="vegetarian">Vegetarian</option>
                             <option value="pescatarian">Pescatarian</option>
@@ -78,7 +91,8 @@ function SearchBar() {
                         key={recipe.recipe.label}
                         title={recipe.recipe.label}
                         image={recipe.recipe.image}
-                        ingredients={recipe.recipe.ingredients}/>
+                        ingredients={recipe.recipe.ingredients}
+                    />
 
                 ))
                 }

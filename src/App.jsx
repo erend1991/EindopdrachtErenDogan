@@ -9,6 +9,7 @@ import SignIn from "./pages/signIn/SignIn.jsx";
 import SignUp from "./pages/signUp/SignUp.jsx";
 import NavBar from "./components/navBar/NavBar.jsx";
 import {AuthContext} from "./AuthContext/AuthContext.jsx";
+import Footer from "./components/footer/footer.jsx";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <main>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/favorites" element={isAuth ? <Favorites /> : <Navigate to="/" />} />
+            <Route path="/favorites" element={isAuth ===true ? <Favorites /> : <Navigate to="/signin" />}/>
             <Route path="/contact" element={<Contact />} />
             <Route path="/recipes/:id" element={<RecipeDetails />} />
             <Route path="/signin" element={<SignIn/>}/>
@@ -28,6 +29,7 @@ function App() {
 
         </Routes>
         </main>
+        <Footer/>
 
     </>
   )

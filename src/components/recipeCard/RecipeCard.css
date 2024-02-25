@@ -1,0 +1,14 @@
+.recipe-card-outer-container {
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+}
+.recipe-card {
+    position: relative;
+    overflow: hidden;
+    width: 450px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}

@@ -3,14 +3,25 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    border-radius: 8px;
+    border: 3px solid grey;
+    box-shadow: 0 0 10px white;
+    margin: 20px;
+    border-radius: 25px;
+    gap: 30px 0;
 }
 
 .inner-searchBar {
     display: flex;
-    gap: 10px;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
     align-items: center;
-    background-color: black;
+}
+
+.inner-searchBar input {
+    width: 500px;
+    padding: 10px;
+    font-size: 16px;
 }
 
 .inner-searchBar input,
@@ -25,13 +36,18 @@
     flex: 1;
 }
 
-.outer-recipe-card-container{
+.inner-searchBar button {
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.outer-recipe-card-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.recipes{
+.recipes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -50,7 +66,7 @@
     height: auto;
 }
 
-.card-body{
+.card-body {
     padding: 10px;
     text-align: center;
 }

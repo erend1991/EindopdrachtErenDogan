@@ -8,7 +8,7 @@ import Header from "../../components/header/Header.jsx";
 function SignUp() {
 
     const [email, setEmail] = useState('')
-    const [userName, setUserName] = useState('')
+    const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
 
     const [error, toggleError] = useState(false);
@@ -23,7 +23,7 @@ function SignUp() {
         try {
             await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signup",
                 {
-                    username: userName,
+                    username: username,
                     email: email,
                     password: password,
                     role: ["user"],
@@ -31,12 +31,12 @@ function SignUp() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": "Bearer xxx.yyy.zzz",
+                        "Authorization": "Bearer xxx.xxx.xxx",
                     },
                 }
             );
-            console.log(email, userName)
-            navigate('/favorites');
+            console.log(email, username)
+            navigate('/signin');
         } catch (e) {
             console.error(e);
             toggleError(true);
@@ -45,9 +45,10 @@ function SignUp() {
         toggleLoading(false);
     }
         return (
+
         <>
             <Header/>
-            <h1>Registreren</h1>
+            <h2>Registreren</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email-field">
                     Emailadres:
@@ -62,9 +63,9 @@ function SignUp() {
                 <label htmlFor="username-field">
                     Gebruikersnaam:
                     <input
-                        type="text"
+                        type="username"
                         id="username-field"
-                        value={userName}
+                        value={username}
                         onChange={(e) => setUserName(e.target.value)}
                     />
                 </label>

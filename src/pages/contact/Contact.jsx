@@ -28,8 +28,8 @@ function ContactForm() {
 
     return (
         <>
-            <h2>Contactpagina</h2>
             <Header />
+            <h2>Contactpagina</h2>
             <div className="form-outer-content-container">
                 {success && <p className="success-message">Bedankt voor uw bericht!</p>}
                 {!success && (
@@ -54,7 +54,7 @@ function ContactForm() {
                         ></textarea>
 
                         <Button type="submit" variant="primary">
-                            Submit
+                            verstuur uw bericht
                         </Button>
 
                         {error && <p>{error}</p>}

@@ -4,13 +4,15 @@ import Button from "../../button/Button.jsx";
 import "./SignIn.css"
 import axios from "axios";
 import Header from "../../components/header/Header.jsx";
+import {useNavigate} from "react-router-dom";
 
 
 function SignIn() {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
     const [error, toggleError] = useState(false)
     const {login} = useContext(AuthContext);
+    const navigate = useNavigate()
 
 
     async function handleSubmit(e) {
@@ -20,11 +22,12 @@ function SignIn() {
 
         try {
             const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
-                email: email,
+                username: username,
                 password: password,
             })
             console.log(result.data)
-            login(result.data.accesToken)
+            login(result.data.accessToken)
+            navigate('/')
 
         } catch (e) {
             console.error(e)
@@ -38,14 +41,14 @@ function SignIn() {
             <Header/>
             <h2>Inloggen</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="email-field">
-                    Emailadres:
+                <label htmlFor="username-field">
+                    username:
                     <input
-                        type="email"
-                        id="email-field"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        id="username-field"
+                        name="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </label>
 
@@ -59,7 +62,7 @@ function SignIn() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                {error && <p>combinatie van emailadres en wachtwoord is onjuist!</p>}
+                {error && <p>combinatie van username en wachtwoord is onjuist!</p>}
                 <Button type="submit" variant="primary">
                     Submit
                 </Button>

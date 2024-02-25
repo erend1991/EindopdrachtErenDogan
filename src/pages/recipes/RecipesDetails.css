@@ -1,6 +1,6 @@
 .recipe-details-container {
     display: flex;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
 
 }
@@ -31,7 +31,9 @@
 .ingredients-list {
     list-style-type: none;
     padding: 0;
-    border-style: solid;
+    border-style: solid ;
+    box-shadow: 0 0 10px white;
+
 }
 
 .ingredients-list li {
