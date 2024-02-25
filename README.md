@@ -40,3 +40,6 @@ een recept hebt die je niet meer in je favorieten wilt hebben kan je op de butto
 Om producten op te slaan in je favorieten moet je ingelogd zijn. De inloglink staat in de navigatiebar. Als je nog geen account hebt moet je je eerst registreren. Deze 
 vind je ook in de navigatiebar.
 
+link naar github.
+
+https://github.com/erend1991/EindopdrachtErenDogan/
