@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './Contact.css';
-import Button from '../../button/Button.jsx';
+import Button from '../../components/button/Button.jsx';
 import Header from '../../components/header/Header.jsx';
+import InputField from "../../components/InputField/InputField.jsx";
+import food2 from "../../assets/food2.jpg"
 
 function ContactForm() {
     const [email, setEmail] = useState('');
@@ -28,14 +30,14 @@ function ContactForm() {
 
     return (
         <>
-            <Header />
+            <Header img={food2} alt={food2}/>
             <h2>Contactpagina</h2>
             <div className="form-outer-content-container">
                 {success && <p className="success-message">Bedankt voor uw bericht!</p>}
                 {!success && (
                     <form className="form-container" onSubmit={handleSubmit}>
                         <label htmlFor="email">Email:</label>
-                        <input
+                        <InputField
                             type="email"
                             id="email"
                             value={email}

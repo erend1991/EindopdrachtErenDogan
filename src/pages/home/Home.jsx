@@ -1,6 +1,7 @@
 import './Home.css'
 import SearchBar from "../../components/searchBar/SearchBar.jsx";
 import Header from "../../components/header/Header.jsx";
+import food1 from "../../assets/food1.jpg"
 
     function Home() {
 
@@ -9,7 +10,8 @@ import Header from "../../components/header/Header.jsx";
             <>
                 <header className="header-outer-content-container">
                     <div className="inner-content-container">
-                        <Header />
+                        <Header img={food1} alt={food1}
+                        />
                         <h2>Wat eten we vandaag.....</h2>
                         <SearchBar />
                         </div>

@@ -1,10 +1,12 @@
 import {useContext, useState} from "react";
 import {AuthContext} from "../../AuthContext/AuthContext.jsx";
-import Button from "../../button/Button.jsx";
+import Button from "../../components/button/Button.jsx";
 import "./SignIn.css"
 import axios from "axios";
 import Header from "../../components/header/Header.jsx";
 import {useNavigate} from "react-router-dom";
+import InputField from "../../components/InputField/InputField.jsx";
+import food3 from "../../assets/food3.jpg"
 
 
 function SignIn() {
@@ -38,12 +40,12 @@ function SignIn() {
 
     return (
         <>
-            <Header/>
+            <Header img={food3} alt={food3}/>
             <h2>Inloggen</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username-field">
                     username:
-                    <input
+                    <InputField
                         type="text"
                         id="username-field"
                         name="username"
@@ -54,7 +56,7 @@ function SignIn() {
 
                 <label htmlFor="password-field">
                     Wachtwoord:
-                    <input
+                    <InputField
                         type="password"
                         id="password-field"
                         name="password"

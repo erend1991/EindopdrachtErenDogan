@@ -1,9 +1,11 @@
 import {Link, useNavigate} from 'react-router-dom';
 import {useState} from "react";
 import axios from "axios";
-import Button from "../../button/Button.jsx";
+import Button from "../../components/button/Button.jsx";
 import './SignUp.css'
 import Header from "../../components/header/Header.jsx";
+import InputField from "../../components/InputField/InputField.jsx";
+import food4 from "../../assets/food4.jpg"
 
 function SignUp() {
 
@@ -47,12 +49,12 @@ function SignUp() {
         return (
 
         <>
-            <Header/>
+            <Header img={food4} alt={food4}/>
             <h2>Registreren</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email-field">
                     Emailadres:
-                    <input
+                    <InputField
                         type="email"
                         id="email-field"
                         name="email"
@@ -62,7 +64,7 @@ function SignUp() {
                 </label>
                 <label htmlFor="username-field">
                     Gebruikersnaam:
-                    <input
+                    <InputField
                         type="username"
                         id="username-field"
                         value={username}

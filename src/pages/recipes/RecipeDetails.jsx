@@ -53,11 +53,11 @@ function RecipeDetails() {
             <div className="recipe-details-container">
                 {recipe && Object.keys(recipe).length > 0 ? (
                     <>
-                        <div className="recipe-info">
+                        <article className="recipe-info">
                             <p className="recipe-label">{recipe.label}</p>
                             <img className="recipe-image" src={recipe.image} alt={recipe.label} />
-                        </div>
-                        <div className="ingredients-container">
+                        </article>
+                        <article className="ingredients-container">
                             <h3>Ingredients:</h3>
                             <ul className="ingredients-list">
                                 {recipe.ingredientLines.map((ingredient, index) => (
@@ -72,7 +72,7 @@ function RecipeDetails() {
                             <button onClick={handleToggleFavorite}>
                                 {isFavorite ? 'verwijderen van favorieten' : 'toevoegen aan favorieten'}
                             </button>
-                        </div>
+                        </article>
                     </>
                 ) : (
                     <p>Loading...</p>

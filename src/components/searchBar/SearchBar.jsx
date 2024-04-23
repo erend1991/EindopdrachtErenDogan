@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import axios from 'axios';
-import Button from "../../button/Button.jsx";
+import Button from "../button/Button.jsx";
 import './SearchBar.css'
 import RecipeCard from "../recipeCard/RecipeCard.jsx";
 import {useForm} from "react-hook-form";
+import SelectBox from "../selectBox/SelectBox.jsx";
 
 function SearchBar() {
     const [recipes, setRecipes] = useState([]);
@@ -11,12 +12,24 @@ function SearchBar() {
     const {register, handleSubmit, setValue} = useForm()
 
 
+    const mealTypeOptions = [
+        { value: 'Breakfast', label: 'ontbijt' },
+        { value: 'Lunch', label: 'lunch' },
+        { value: 'Dinner', label: 'diner' }
+    ];
+
+    const healthOptions = [
+        { value: 'vegan', label: 'Vegan' },
+        { value: 'vegetarian', label: 'Vegetarian' },
+        { value: 'pescatarian', label: 'Pescatarian' },
+        { value: 'pork-free', label: 'Zonder varkensvlees' },
+        { value: 'gluten-free', label: 'Gluten vrij' }
+    ];
     async function getRecipes(data) {
         setError(false);
         console.log(data);
 
         try {
-            // Construct the API query dynamically based on the provided options
             let apiQuery = `https://api.edamam.com/api/recipes/v2?type=public&app_id=17ed807b&app_key=527f06e4d596aa8bb42802f7ab70ef6c`;
 
             if (data.searchQuery) {
@@ -58,26 +71,22 @@ function SearchBar() {
                         }}
                     />
                     <label>
-                        <select {...register('mealType')}>
-                            <option value="">-- Selecteer een categorie --</option>
-                            <option value="Breakfast">ontbijt</option>
-                            <option value="Lunch">lunch</option>
-                            <option value="Dinner">diner</option>
-                        </select>
+                        <SelectBox
+                            label="Meal Type"
+                            name="mealType"
+                            options={mealTypeOptions}
+                            register={register}
+                        />
+                        <SelectBox
+                            label="Health"
+                            name="health"
+                            options={healthOptions}
+                            register={register}
+                        />
+
                     </label>
 
-                    <label>
-                        <select  {...register('health')}>
-                            <option value="">-- Selecteer een categorie --</option>
-                            <option value="vegan">Vegan</option>
-                            <option value="vegetarian">Vegetarian</option>
-                            <option value="pescatarian">Pescatarian</option>
-                            <option value="pork-free">Zonder varkensvlees</option>
-                            <option value="gluten-free">Gluten vrij</option>
-                        </select>
-                    </label>
-
-                    <Button type="submit" variant="primary">zoeken</Button>
+                    <Button type="submit" >Search</Button>
 
                 </form>
             </div>

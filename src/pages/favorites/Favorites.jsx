@@ -23,7 +23,7 @@ function Favorites (){
             {favorites.length > 0 ? (
                 <div className="list">
                     {favorites.map((fav, index) => (
-                        <div key={index} className="list-item">
+                        <article key={index} className="list-item">
                             <h3>{fav.label}</h3>
                             <img className="fav-image" src={fav.image} alt={fav.label} />
                             <h4>Ingredienten:</h4>
@@ -38,8 +38,8 @@ function Favorites (){
                             ) : (
                                 <p>No ingredients available.</p>
                             )}
-                            <button  onClick={() => removeFromFavorites(index)}>Verwijder uit favorieten</button>
-                        </div>
+                            <button type="submit" onClick={() => removeFromFavorites(index)}>Verwijder uit favorieten</button>
+                        </article>
                     ))}
                 </div>
             ) : (
