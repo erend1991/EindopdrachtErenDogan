@@ -21,7 +21,7 @@ function Favorites (){
         <div className="favorites-container">
             <h2>Favorieten</h2>
             {favorites.length > 0 ? (
-                <div className="list">
+                <section className="list">
                     {favorites.map((fav, index) => (
                         <article key={index} className="list-item">
                             <h3>{fav.label}</h3>
@@ -41,7 +41,7 @@ function Favorites (){
                             <button type="submit" onClick={() => removeFromFavorites(index)}>Verwijder uit favorieten</button>
                         </article>
                     ))}
-                </div>
+                </section>
             ) : (
                 <p className="no-favorites">Nog geen favorieten toegevoegd.</p>
             )}

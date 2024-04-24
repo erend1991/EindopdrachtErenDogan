@@ -7,12 +7,12 @@ function RecipeCard({ title, image, uri,}) {
 
     return (
         <div className="recipe-card-outer-containter">
-        <div className="recipe-card">
+        <article className="recipe-card">
             <Link to={`/recipes/${id}`}>
                 <h3>{title}</h3>
                 <img src={image} alt={title} />
             </Link>
-        </div>
+        </article>
         </div>
     );
 }

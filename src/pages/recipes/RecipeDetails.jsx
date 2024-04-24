@@ -69,7 +69,7 @@ function RecipeDetails() {
                                 ))}
 
                             </ul>
-                            <button onClick={handleToggleFavorite}>
+                            <button  type="submit" onClick={handleToggleFavorite}>
                                 {isFavorite ? 'verwijderen van favorieten' : 'toevoegen aan favorieten'}
                             </button>
                         </article>
