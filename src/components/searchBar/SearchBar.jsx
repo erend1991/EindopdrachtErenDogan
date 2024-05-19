@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Button from "../button/Button.jsx";
 import './SearchBar.css'
@@ -11,27 +11,34 @@ function SearchBar() {
     const [recipes, setRecipes] = useState([]);
     const [error, setError] = useState(false);
     const {register, handleSubmit, setValue} = useForm()
+    const controller = new AbortController();
 
 
     const mealTypeOptions = [
-        { value: 'Breakfast', label: 'ontbijt' },
-        { value: 'Lunch', label: 'lunch' },
-        { value: 'Dinner', label: 'diner' }
+        {value: 'Breakfast', label: 'ontbijt'},
+        {value: 'Lunch', label: 'lunch'},
+        {value: 'Dinner', label: 'diner'}
     ];
 
     const healthOptions = [
-        { value: 'vegan', label: 'Vegan' },
-        { value: 'vegetarian', label: 'Vegetarian' },
-        { value: 'pescatarian', label: 'Pescatarian' },
-        { value: 'pork-free', label: 'Zonder varkensvlees' },
-        { value: 'gluten-free', label: 'Gluten vrij' }
+        {value: 'vegan', label: 'Vegan'},
+        {value: 'vegetarian', label: 'Vegetarian'},
+        {value: 'pescatarian', label: 'Pescatarian'},
+        {value: 'pork-free', label: 'Zonder varkensvlees'},
+        {value: 'gluten-free', label: 'Gluten vrij'}
     ];
+    useEffect(() => {
+        return  function cleanUp()  {
+            controller.abort();
+        };
+    }, [controller]);
+
     async function getRecipes(data) {
         setError(false);
         console.log(data);
 
         try {
-            let apiQuery = `https://api.edamam.com/api/recipes/v2?type=public&app_id=17ed807b&app_key=527f06e4d596aa8bb42802f7ab70ef6c`;
+            let apiQuery = `https://api.edamam.com/api/recipes/v2?type=public&app_id=17ed807b&app_key=527f06e4d596aa8bb42802f7ab70ef6c`
 
             if (data.searchQuery) {
                 apiQuery += `&q=${data.searchQuery}`;
@@ -94,12 +101,13 @@ function SearchBar() {
 
                     </label>
 
-                    <Button type="submit" >Search</Button>
+                    <Button type="submit">Search</Button>
 
                 </form>
             </div>
             <div className="outer-recipe-card-container">
-                {error && <ErrorMessage message="Geen recepten gevonden!" />}                <div className="recipe-card-container"/>
+                {error && <ErrorMessage message="Geen recepten gevonden!"/>}
+                <div className="recipe-card-container"/>
                 {recipes.map((recipe) => (
                     <RecipeCard
                         recipe={recipe}
