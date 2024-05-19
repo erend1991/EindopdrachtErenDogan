@@ -1,7 +1,9 @@
 .recipe-details-container {
     display: flex;
-    max-width: 600px;
-    margin: 0 auto;
+    flex-basis: 600px;
+    margin: 10px ;
+    gap: 10px;
+
 
 }
 
@@ -33,6 +35,7 @@
     padding: 0;
     border-style: solid ;
     box-shadow: 0 0 10px white;
+    margin: 10px;
 
 }
 

@@ -1,6 +1,7 @@
 .favorites-container {
-    max-width: 1200px;
+    flex-basis: 1200px;
     margin: 0 auto;
+
 }
 
 .title {
