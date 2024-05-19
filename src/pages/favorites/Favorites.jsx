@@ -5,6 +5,8 @@ import './Favorites.css';
 function Favorites (){
     const [favorites, setFavorites] = useState([]);
 
+
+
     useEffect(() => {
         const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
         setFavorites(storedFavorites);
@@ -18,10 +20,11 @@ function Favorites (){
     };
 
     return (
-        <div className="favorites-container">
+        <>
+        <section className="favorites-container">
             <h2>Favorieten</h2>
             {favorites.length > 0 ? (
-                <section className="list">
+                <article className="list">
                     {favorites.map((fav, index) => (
                         <article key={index} className="list-item">
                             <h3>{fav.label}</h3>
@@ -41,11 +44,12 @@ function Favorites (){
                             <button type="submit" onClick={() => removeFromFavorites(index)}>Verwijder uit favorieten</button>
                         </article>
                     ))}
-                </section>
+                </article>
             ) : (
                 <p className="no-favorites">Nog geen favorieten toegevoegd.</p>
             )}
-        </div>
+        </section>
+            </>
     );
 }
 

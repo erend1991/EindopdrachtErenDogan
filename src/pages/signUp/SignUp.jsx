@@ -6,6 +6,7 @@ import './SignUp.css'
 import Header from "../../components/header/Header.jsx";
 import InputField from "../../components/InputField/InputField.jsx";
 import food4 from "../../assets/food4.jpg"
+import ErrorMessage from "../../components/errorMessage/ErrorMessage.jsx";
 
 function SignUp() {
 
@@ -62,7 +63,7 @@ function SignUp() {
                     />
                 </label>
                 <label htmlFor="username-field">
-                    Gebruikersnaam:
+                    Username:
                     <InputField
                         type="username"
                         id="username-field"
@@ -81,7 +82,7 @@ function SignUp() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                {error && <p className="error">Dit account bestaat al. Probeer een ander emailadres.</p>}
+                {error && <ErrorMessage message="combinatie van wachtwoord, username of emailadres is onjuist" />}
                 <Button variant="primary"
                     type="submit"
                     className="form-button"

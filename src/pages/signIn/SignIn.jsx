@@ -7,6 +7,7 @@ import Header from "../../components/header/Header.jsx";
 import {useNavigate} from "react-router-dom";
 import InputField from "../../components/InputField/InputField.jsx";
 import food3 from "../../assets/food3.jpg"
+import ErrorMessage from "../../components/errorMessage/ErrorMessage.jsx";
 
 
 function SignIn() {
@@ -63,7 +64,7 @@ function SignIn() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                {error && <p>combinatie van username en wachtwoord is onjuist!</p>}
+                {error && <ErrorMessage message="combinatie van wachtwoord en username is onjuist" />}
                 <Button type="submit" variant="primary">
                     Submit
                 </Button>

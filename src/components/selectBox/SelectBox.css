@@ -1,0 +1,7 @@
+label {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin-bottom: 1rem;
+}
+

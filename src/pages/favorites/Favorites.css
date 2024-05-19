@@ -1,6 +1,9 @@
 .favorites-container {
     flex-basis: 1200px;
-    margin: 0 auto;
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    /*margin: 0 auto;*/
 
 }
 
@@ -15,8 +18,8 @@
 }
 
 .list-item {
-    width: 30%;
-    margin: 0 1% 20px;
+    flex-basis: 30%;
+    margin: 0  20px;
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid grey;
@@ -42,3 +45,4 @@
     font-size: 18px;
     margin-top: 20px;
 }
+

@@ -47,7 +47,7 @@ function RecipeDetails() {
 
     return (
         <>
-            <div className="recipe-details-container">
+            <article className="recipe-details-container">
                 {recipe && Object.keys(recipe).length > 0 ? (
                     <>
                         <article className="recipe-info">
@@ -74,7 +74,7 @@ function RecipeDetails() {
                 ) : (
                     <p>Loading...</p>
                 )}
-            </div>
+            </article>
 
             <Link className="nav-container" to="/">homepagina</Link>
 

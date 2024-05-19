@@ -3,7 +3,7 @@ function InputField ({type, value, placeholder, onChange, className})
 {
 
     return (
-        <div>
+        <>
         <input
             type={type}
             value={value}
@@ -12,7 +12,7 @@ function InputField ({type, value, placeholder, onChange, className})
             className={className}
             >
         </input>
-        </div>
+        </>
     )
 }
 
