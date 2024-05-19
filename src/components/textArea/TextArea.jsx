@@ -1,7 +1,7 @@
 import './TextArea.css';
 
 
-function TextArea({ label, name, value, onChange, placeholder, rows, cols, disabled, maxLength }) {
+function TextArea({ label, name, value, onChange, placeholder, rows, cols, disabled,minLength, maxLength }) {
     return (
         <div className="text-area-container">
             {label && <label htmlFor={name}>{label}</label>}
@@ -14,6 +14,7 @@ function TextArea({ label, name, value, onChange, placeholder, rows, cols, disab
                 rows={rows}
                 cols={cols}
                 disabled={disabled}
+                minLength={minLength}
                 maxLength={maxLength}
                 className="text-area"
             ></textarea>

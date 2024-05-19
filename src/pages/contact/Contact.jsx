@@ -5,6 +5,7 @@ import Header from '../../components/header/Header.jsx';
 import InputField from "../../components/InputField/InputField.jsx";
 import food2 from "../../assets/food2.jpg"
 import TextArea from "../../components/textArea/TextArea.jsx";
+import ErrorMessage from "../../components/errorMessage/ErrorMessage.jsx";
 
 function ContactForm() {
     const [email, setEmail] = useState('');
@@ -14,15 +15,22 @@ function ContactForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         try {
+            if (!email || !message) {
+                throw new Error('E-mail en bericht zijn verplicht.');
+            }
+
+            if (message.length < 10 || message.length > 500) {
+                throw new Error('Het bericht moet tussen 10 en 500 tekens lang zijn.');
+            }
+
             setSuccess(true);
             console.log('Email:', email);
             console.log('Message:', message);
-            console.log('bericht verstuurd');
+            console.log('Bericht verstuurd');
         } catch (err) {
             console.error(err);
-            setError('Er is iets misgegaan.');
+            setError(err.message);
         } finally {
             setEmail('');
             setMessage('');
@@ -46,31 +54,24 @@ function ContactForm() {
                             required
                         />
 
-                        <label htmlFor="message">Message:</label>
+                        <label htmlFor="message">Bericht:</label>
                         <TextArea
-                            label="Message"
+                            label="Bericht"
                             name="message"
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            placeholder= "uw Bericht"
+                            placeholder="Voer uw bericht in..."
                             rows="5"
                             cols="50"
+                            minLength="10"
                             maxLength="500"
-
+                            required
                         />
-                        {/*<textarea*/}
-                        {/*    id="message"*/}
-                        {/*    value={message}*/}
-                        {/*    name="message"*/}
-                        {/*    onChange={(e) => setMessage(e.target.value)}*/}
-                        {/*    required*/}
-                        {/*></textarea>*/}
-
                         <Button type="submit" variant="primary">
-                            verstuur uw bericht
+                            Verstuur uw bericht
                         </Button>
 
-                        {error && <p>{error}</p>}
+                        {error && <ErrorMessage message={error} />}
                     </form>
                 )}
             </div>
