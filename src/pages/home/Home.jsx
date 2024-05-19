@@ -10,9 +10,8 @@ import food1 from "../../assets/food1.jpg"
             <>
                 <header className="header-outer-content-container">
                     <div className="inner-content-container">
-                        <Header img={food1} alt={food1}
+                        <Header img={food1} alt={food1} title="Wat eten we vandaag..."
                         />
-                        <h2>Wat eten we vandaag.....</h2>
                         <SearchBar />
                         </div>
                 </header>

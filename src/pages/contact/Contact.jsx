@@ -4,6 +4,7 @@ import Button from '../../components/button/Button.jsx';
 import Header from '../../components/header/Header.jsx';
 import InputField from "../../components/InputField/InputField.jsx";
 import food2 from "../../assets/food2.jpg"
+import TextArea from "../../components/textArea/TextArea.jsx";
 
 function ContactForm() {
     const [email, setEmail] = useState('');
@@ -18,10 +19,10 @@ function ContactForm() {
             setSuccess(true);
             console.log('Email:', email);
             console.log('Message:', message);
-            console.log('Form submitted successfully');
+            console.log('bericht verstuurd');
         } catch (err) {
             console.error(err);
-            setError('An error occurred while submitting the form.');
+            setError('Er is iets misgegaan.');
         } finally {
             setEmail('');
             setMessage('');
@@ -30,8 +31,7 @@ function ContactForm() {
 
     return (
         <>
-            <Header img={food2} alt={food2}/>
-            <h2>Contactpagina</h2>
+            <Header img={food2} alt={food2} subtitle="Contactpagina"/>
             <div className="form-outer-content-container">
                 {success && <p className="success-message">Bedankt voor uw bericht!</p>}
                 {!success && (
@@ -47,13 +47,24 @@ function ContactForm() {
                         />
 
                         <label htmlFor="message">Message:</label>
-                        <textarea
-                            id="message"
-                            value={message}
+                        <TextArea
+                            label="Message"
                             name="message"
+                            value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            required
-                        ></textarea>
+                            placeholder= "uw Bericht"
+                            rows="5"
+                            cols="50"
+                            maxLength="500"
+
+                        />
+                        {/*<textarea*/}
+                        {/*    id="message"*/}
+                        {/*    value={message}*/}
+                        {/*    name="message"*/}
+                        {/*    onChange={(e) => setMessage(e.target.value)}*/}
+                        {/*    required*/}
+                        {/*></textarea>*/}
 
                         <Button type="submit" variant="primary">
                             verstuur uw bericht

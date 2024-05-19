@@ -50,6 +50,13 @@ function SearchBar() {
                     'Accept-Language': 'Dutch',
                 },
             });
+            if (response.data.hits.length === 0) {
+                setError(true);
+            } else {
+                setRecipes(response.data.hits);
+                setError(false);
+            }
+
             setRecipes(response.data.hits);
             console.log(response.data.hits)
         } catch (error) {
@@ -91,7 +98,7 @@ function SearchBar() {
                 </form>
             </div>
             <div className="outer-recipe-card-container">
-                {error && <p>Geen recepten gevonden!</p>}
+                {error && <p className="error-message">Geen recepten gevonden!</p>}
                 <div className="recipe-card-container"/>
                 {recipes.map((recipe) => (
                     <RecipeCard

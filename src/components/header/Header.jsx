@@ -1,13 +1,14 @@
-
 import './Header.css'
 
 
+function Header({img, alt, title, subtitle}) {
 
-
-function Header({img, alt})  {
-
-    return(
-        <header> {img && <img src={img} alt={alt}/>}</header>
+    return (
+        <header>
+            {img && <img src={img} alt={alt}/>}
+            {title && <h1>{title}</h1>}
+            {subtitle && <h2>{subtitle}</h2>}
+        </header>
     )
 }
 

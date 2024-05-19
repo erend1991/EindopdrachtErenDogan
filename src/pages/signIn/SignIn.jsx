@@ -40,8 +40,7 @@ function SignIn() {
 
     return (
         <>
-            <Header img={food3} alt={food3}/>
-            <h2>Inloggen</h2>
+            <Header img={food3} alt={food3} subtitle="Inloggen"/>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username-field">
                     username:

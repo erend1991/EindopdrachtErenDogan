@@ -29,12 +29,9 @@ function RecipeDetails() {
         }
     }, [id]);
 
-    useEffect(() => {
-        const isRecipeInFavorites = localStorage.getItem(`favorite_recipe_${id}`);
-        setIsFavorite(!!isRecipeInFavorites);
-    }, [id]);
 
-    const handleToggleFavorite = () => {
+
+    function handleToggleFavorite ()  {
         if (!isFavorite) {
             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
             favorites.push(recipe);
@@ -46,7 +43,7 @@ function RecipeDetails() {
         }
 
         setIsFavorite(!isFavorite);
-    };
+    }
 
     return (
         <>

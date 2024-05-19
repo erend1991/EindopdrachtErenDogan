@@ -23,6 +23,7 @@ Om de Api te kunnen gebruiken heb je de volgende software nodig:
 
 - Node.js
 - npm (Node Package Manager)
+- Een API-key en een API-ID van Edamam (registreer op de Edamam-website om deze te verkrijgen)
 
 ## Installatie
 
@@ -30,10 +31,14 @@ Om de Api te kunnen gebruiken heb je de volgende software nodig:
    https://github.com/erend1991/EindopdrachtErenDogan/
 2. Installeer npm in de terminal:
 `   npm install`
-3. voer de start commmando in de terminal:
+3. maak een .env bestand aan in het project
+`   .env`
+4. Vul het .env bestand met jouw Edamam API-sleutel en ID:
+  ` API_KEY=JOUW_API_KEY_HIER
+    API_ID=JOUW_API_ID_HIER`
+5. voer de start commmando in de terminal:
 `   npm run dev`
-4. de api key vind je in het .env bestand
-5. Je kan aan de slag!
+6. Je kan aan de slag!
 
 
 
@@ -41,18 +46,38 @@ Om de Api te kunnen gebruiken heb je de volgende software nodig:
 
 ## Gebruikshandleiding
 
-Met deze applicatie kan je recepten ophalen van de edamam api. De api key en ID vind je in het .env bestand. Deze hoef je dus niet meer in te vullen. Op de homepagina kom je 
-gelijk al op de belangrijkste pagina. Hier kan je op zoek gaan naar recepten. De search inputfield is er om je ingredienten te kunnen invullen. Om een nog beter resultaat
-te krijgen raad ik het u aan om de ingredienten in het engels op te zoeken. Dit kunnen er meerdere zijn!. Vervolgens kan je maaltijdtype en een gezondheidscatagorie selecteren.
-Je kan ook 1 van de 3 opties invullen. Als je de gewenste opties hebt ingevuld kun je op het zoekbutton drukken en krijg je de resultaten te zien.
+Met deze applicatie kan je recepten ophalen van de edamam api. De api key en ID vind je in het .env bestand. Deze hoef je dus niet meer in te vullen.
 
-De resultaten krijg je te zien op dezelfde pagina. Als je een recept ziet wat je leuk vindt kan je op deze Card drukken wat je vervolgens doorverwijst naar de volgende 
-pagina. Hier heb je een wat grotere afbeelding van het product en de igredienten. Ook is er een favorieten button die je kan gebruiken om het producten toe te voegen of
-te verwijderen van je favorieten. Om producten op te slaan in je favorieten moet je wel ingelogd zijn. Hier voor heb je wel een account nodig. 
+**Homepagina**
+
+Op de homepagina kom je gelijk al op de belangrijkste pagina. Hier kan je op zoek gaan naar recepten. 
+* De inputfield is er om je ingredienten in te kunnen invullen. Om een nog beter resultaat
+te krijgen raad ik het u aan om de ingredienten in het engels op te zoeken. Dit kunnen er meerdere zijn!. 
+* Selecteer eventueel maaltijdtype en een gezondheidscatagorie.
+* Klik op de zoekknop
+ 
+
+**resultaten** 
+
+De resultaten krijg je te zien op dezelfde pagina.
+*  selecteer een maaltijd om de ingredienten te zien
+
+Vervolgens kom je op de recipcard terecht. Hier heb je een lijst met indredienten en een favorieten button
+
+**Favorieten**
+* Druk op de favorieten button om op te slaan in favorieten(je moet wel ingelogd zijn)
+
+**Inloggen/registreren**
+
+* Registreren:
+Ga naar de registreren pagina.
+Vul de benodigde gegevens in om een account aan te maken.
+
+* Inloggen:
+Na registratie kun je inloggen met je gebruikersnaam en wachtwoord.
+Zodra je bent ingelogd, kun je recepten toevoegen aan je favorieten.
 
 
-Als je eenmaal recepten hebt toegevoegd aan je favorieten kun je klikken op de favorieten link in de navigatiebar. Dan krijg je een overzicht van al je favorieten. Als je 
-een recept hebt die je niet meer in je favorieten wilt hebben kan je op de button drukken en wordt deze verwijderd uit je favorieten.
 
 
 

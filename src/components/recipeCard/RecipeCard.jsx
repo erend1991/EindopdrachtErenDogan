@@ -6,14 +6,14 @@ function RecipeCard({ title, image, uri,}) {
 
 
     return (
-        <div className="recipe-card-outer-containter">
+        <section className="recipe-card-outer-containter">
         <article className="recipe-card">
             <Link to={`/recipes/${id}`}>
                 <h3>{title}</h3>
                 <img src={image} alt={title} />
             </Link>
         </article>
-        </div>
+        </section>
     );
 }
 

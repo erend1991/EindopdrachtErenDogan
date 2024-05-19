@@ -49,8 +49,7 @@ function SignUp() {
         return (
 
         <>
-            <Header img={food4} alt={food4}/>
-            <h2>Registreren</h2>
+            <Header img={food4} alt={food4} subtitle="Registreren"/>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email-field">
                     Emailadres:
