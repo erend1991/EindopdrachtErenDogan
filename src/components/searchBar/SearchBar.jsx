@@ -5,6 +5,7 @@ import './SearchBar.css'
 import RecipeCard from "../recipeCard/RecipeCard.jsx";
 import {useForm} from "react-hook-form";
 import SelectBox from "../selectBox/SelectBox.jsx";
+import ErrorMessage from "../errorMessage/ErrorMessage.jsx";
 
 function SearchBar() {
     const [recipes, setRecipes] = useState([]);
@@ -98,8 +99,7 @@ function SearchBar() {
                 </form>
             </div>
             <div className="outer-recipe-card-container">
-                {error && <p className="error-message">Geen recepten gevonden!</p>}
-                <div className="recipe-card-container"/>
+                {error && <ErrorMessage message="Geen recepten gevonden!" />}                <div className="recipe-card-container"/>
                 {recipes.map((recipe) => (
                     <RecipeCard
                         recipe={recipe}
